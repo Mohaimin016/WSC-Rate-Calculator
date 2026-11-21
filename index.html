@@ -687,7 +687,8 @@ function quoteData(){
 }
 function waNumber(v){let d=String(v||'').replace(/\D/g,'');if(/^01\d{9}$/.test(d))d='88'+d;else if(/^1\d{9}$/.test(d))d='880'+d;else if(/^0088/.test(d))d=d.slice(2);return d.length>=10?d:''}
 // One tap: open the customer's WhatsApp chat with the quotation message typed in; staff press Send.
-function waText(q){return `Dear ${trim($('custName').value)||'Customer'},\nThank you for choosing us. Your shipping quotation:\n\nQuotation No: ${q.qno}\nDestination: ${last.country}${last.postal?' ('+last.postal+')':''}\nChargeable weight: ${last.weight}\nRemote area (ODA): ${last.oda?'Yes':'No'}\nTotal payable: ${q.total} (incl. VAT)\nValid until: ${q.until}\n\nValidity only for the ${q.valid} day${q.valid>1?'s':''}. The final charge is based on the actual or volumetric weight measured at the counter, whichever is higher.`+(S.branch?`\n\n${S.branch}`+(S.phone?`\n${S.phone}`:''):'')}
+function waText(q){return `Dear ${trim($('custName').value)||'Customer'},\nThank you for choosing us. Your shipping quotation:\n\nQuotation No: ${q.qno}\nDestination: ${last.country}${last.postal?' ('+last.postal+')':''}\nChargeable weight: ${last.weight}\nRemote area (ODA): ${last.oda?'Yes':'No'}\nTotal payable: ${q.total} (incl. VAT)\nValid until: ${q.until}\n\nValidity only for the ${q.valid} day${q.valid>1?'s':''}. The final charge is based on the actual or volumetric weight measured at the counter, whichever is higher.`+branchSignature()}
+function branchSignature(){const l=[S.branch,S.address,S.phone?'Phone: '+S.phone:''].filter(Boolean);return l.length?'\n\n'+l.join('\n'):''}
 $('waBtn').addEventListener('click',()=>{
   if(!last){toast('Complete the shipment details first.',true);return}
   const num=waNumber($('custPhone').value);

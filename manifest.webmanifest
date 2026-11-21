@@ -1,0 +1,16 @@
+{
+  "name": "WSC Rate Calculator",
+  "short_name": "WSC Rates",
+  "description": "Walk-in customer shipping rate calculator for branch staff",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#5b21b6",
+  "theme_color": "#5b21b6",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
